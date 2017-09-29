@@ -1,20 +1,63 @@
 package com.android.calender;
 
 import android.app.Activity;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Akanksha on 19-Jul-16.
- */
 public class CalenderUtils {
+    /**
+     * Compare if date is the last day of the month then you can't select any more checkout dates
+     *
+     * @param inFormattedDate
+     * @return
+     */
+    public static boolean compareIfLastAvailableCheckInDate(Activity mActivity, String inFormattedDate, Locale appLocale) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yy", appLocale);
+            Date date = Calendar.getInstance().getTime();
+            String mTodayDate = sdf.format(date);
+
+            Date date1 = sdf.parse(inFormattedDate);
+            Calendar calender = Calendar.getInstance();
+            calender.setTime(sdf.parse(mTodayDate));
+            //calender.add(Calendar.DATE, -1);
+            calender.add(Calendar.YEAR, 1);
+            String mOneNightDate = sdf.format(calender.getTime());
+            Date date2 = sdf.parse(mOneNightDate);
+
+            if (date1.compareTo(date2) == 0) {
+                //CJRAppUtility.showAlert(mActivity, mActivity.getResources().getString(R.string.error), mActivity.getResources().getString(R.string.select_other_check_in_date));
+                Toast.makeText(mActivity, mActivity.getResources().getString(R.string.error) + "\n" + mActivity.getResources().getString(R.string.select_other_check_in_date), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        } catch (ParseException ex) {
+                ex.printStackTrace();
+
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static Date returnDateValue(Activity activity, String date) {
+        if (date != null) {
+            SimpleDateFormat format = new SimpleDateFormat("dd MMMM yy");
+            try {
+                Date dateValue = format.parse(date);
+                return dateValue;
+            } catch (ParseException e) {
+
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
 
     public static String formatDate(Activity mContext, String inputDate, String inputFormat, String outputFormat) {
         try {
@@ -32,44 +75,5 @@ public class CalenderUtils {
             e.printStackTrace();
             return "";
         }
-    }
-
-    /**
-     * Get a diff between two dates
-     * @param dateToday today's date
-     * @param dateSelected the newest date
-     * @param timeUnit the unit in which you want the diff
-     * @param appLocale
-     * @return the diff value, in the provided unit
-     */
-    public static long getDateDiff(Date dateToday, Date dateSelected, TimeUnit timeUnit, Locale appLocale) {
-        long diffInMillies = 0;
-        diffInMillies = dateSelected.getTime() - dateToday.getTime();
-        return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
-    }
-
-    public static void handleAdjacentDateSelection(RelativeLayout mLytToday, RelativeLayout mLytTomorrow,
-                                                   TextView mTxtToday, TextView mTxtTomorrow, boolean today, boolean tomo) {
-        //layout changes
-        mLytTomorrow.setSelected(tomo);
-        mTxtTomorrow.setSelected(tomo);
-        mLytToday.setSelected(today);
-        mTxtToday.setSelected(today);
-    }
-
-    public static Date returnDateValue(Activity context, String date, Locale appLocale) {
-        if(date != null) {
-            SimpleDateFormat format = new SimpleDateFormat("dd MMMM yy", appLocale);
-            try {
-                Date dateValue = format.parse(date);
-                return dateValue;
-            } catch (ParseException e) {
-                //if(CJRAppCommonUtility.isDebug) {
-                    e.printStackTrace();
-//                }
-//                CJRAppUtility.refreshAppToUpdateLocale(context);
-            }
-        }
-        return null;
     }
 }

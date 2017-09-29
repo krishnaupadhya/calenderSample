@@ -16,10 +16,7 @@ import java.util.Locale;
  */
 
 public class AppUtility {
-    public static int getScreenGridUnit(Context context) {
-        return getScreenWidth((Activity) context)
-                / Constants.NUMBER_OF_BOX_IN_ROW;
-    }
+
 
     public static String calenderFormatDate(Activity mContext, String inputDate, String inputFormat, String outputFormat) {
         try {
@@ -33,12 +30,10 @@ public class AppUtility {
 
                 e.printStackTrace();
 
-//            refreshAppToUpdateLocale(mContext);
             return "";
         } catch (Exception e) {
                 e.printStackTrace();
 
-//            refreshAppToUpdateLocale(mContext);
             return "";
         }
     }
@@ -90,13 +85,5 @@ public class AppUtility {
             width = 0;
         }
         return width;
-    }
-
-    public static int getScreenHeight(Activity activity) {
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        activity.getWindowManager().getDefaultDisplay()
-                .getMetrics(displayMetrics);
-        int height = displayMetrics.heightPixels;
-        return height;
     }
 }

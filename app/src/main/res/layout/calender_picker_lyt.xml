@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="@string/train_departure_tab"
-                android:textColor="@color/departure_txt"
+                android:textColor="@color/start_date_txt"
                 android:textSize="13sp" />
 
             <android.support.v7.widget.AppCompatTextView
@@ -44,7 +44,7 @@
             android:layout_width="78dp"
             android:layout_height="1dp"
             android:layout_gravity="center"
-            android:background="@color/train_view_sep" />
+            android:background="@color/view_sep" />
     </LinearLayout>
 
     <LinearLayout

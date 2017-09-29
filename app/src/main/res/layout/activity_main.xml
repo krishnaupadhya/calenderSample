@@ -30,12 +30,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:tag="@string/flight_depart"
-                    android:text="@string/flight_depart"
-                    android:textColor="@color/flight_text_color"
+                    android:tag="@string/start_date"
+                    android:text="@string/start_date"
+                    android:textColor="@color/text_color_adadad"
                     android:textSize="@dimen/cart_14sp"
-                    android:visibility="gone"
-                     />
+                    android:visibility="gone" />
 
                 <RelativeLayout
                     android:id="@+id/departure_date"
@@ -50,11 +49,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:tag="@string/flight_depart"
-                        android:text="@string/flight_depart"
-                        android:textColor="@color/flight_from_to_color"
-                        android:textSize="@dimen/cart_16sp"
-                         />
+                        android:tag="@string/start_date"
+                        android:text="@string/start_date"
+                        android:textColor="@color/color_4a4a4a"
+                        android:textSize="@dimen/cart_16sp" />
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
@@ -78,12 +76,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:tag="@string/select_return_date"
-                    android:text="@string/select_return_date"
-                    android:textColor="@color/flight_text_color"
+                    android:tag="@string/end_date"
+                    android:text="@string/end_date"
+                    android:textColor="@color/text_color_adadad"
                     android:textSize="@dimen/cart_14sp"
-                    android:visibility="gone"
-                     />
+                    android:visibility="gone" />
 
                 <RelativeLayout
                     android:id="@+id/return_date_Rel_lyt"
@@ -97,13 +94,11 @@
                         android:id="@+id/return_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/source_date"
                         android:layout_alignParentRight="true"
-                        android:tag="@string/select_return_date"
-                        android:text="@string/select_return_date"
-                        android:textColor="@color/flight_from_to_color"
-                        android:textSize="@dimen/cart_16sp"
-                         />
+                        android:tag="@string/end_date"
+                        android:text="@string/end_date"
+                        android:textColor="@color/color_4a4a4a"
+                        android:textSize="@dimen/cart_16sp" />
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>

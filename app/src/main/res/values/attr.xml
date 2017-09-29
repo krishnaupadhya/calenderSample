@@ -2,7 +2,7 @@
 <resources>
 
 
-    <declare-styleable name="CJRDottedProgressBar">
+    <declare-styleable name="DottedProgressBar">
         <attr name="dot_size" format="integer" />
         <attr name="dot_margin" format="integer" />
     </declare-styleable>

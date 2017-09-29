@@ -2,7 +2,6 @@ package com.android.calender;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -62,41 +61,37 @@ public class MainActivity extends AppCompatActivity {
      */
     private void launchReturnCalender() {
         if (mSourceDate.getText().toString().equalsIgnoreCase(getResources().getString(R.string
-                .flight_depart))) {
+                .start_date))) {
             Toast.makeText(this, getResources().getString(R.string
                     .error) + "" + getResources().getString(R.string
                     .flight_select_depart_date), Toast.LENGTH_LONG).show();
-//            AppUtility.showAlert(this, getResources().getString(R.string
-//                    .contact_us_error), getResources().getString(R.string
-//                    .flight_select_depart_date));
             return;
         } else {
-            Intent mCheckOutIntent = new Intent(this, AJRFlightTwoWayCalendar.class);
-            mCheckOutIntent.putExtra(Constants.FLIGHT_BOOK_DATE, mReturnDate.getText()
+            Intent mCheckOutIntent = new Intent(this, TwoWayCalendarActivity.class);
+            mCheckOutIntent.putExtra(Constants.KEY_DATE, mReturnDate.getText()
                     .toString());
             mCheckOutIntent.putExtra(Constants.INTENT_EXTRA_SELECTED_INTENT_TYPE,
-                    Constants.INTENT_EXTRA_SELECTED_RETURN_DATE);
-            mCheckOutIntent.putExtra(Constants.INTENT_EXTRA_IS_ONE_WAY, false);
-            mCheckOutIntent.putExtra(Constants.FLIGHT_TICKET_DATE_NEXT_TYPE,
+                    Constants.INTENT_EXTRA_SELECTED_END_DATE);
+            mCheckOutIntent.putExtra(Constants.KEY_DATE_NEXT_TYPE,
                     mCheckInDateWithYear);
 
             if (mCheckInDateWithYear != null && !mCheckInDateWithYear.equalsIgnoreCase
-                    (Constants.FLIGHT_DEPART) &&
+                    (Constants.KEY_START_DATE) &&
                     mCheckOutDateWithYear != null) {
-                mCheckOutIntent.putExtra(Constants.INTENT_EXTRA_UPDATED_DEPART_DATE,
+                mCheckOutIntent.putExtra(Constants.INTENT_EXTRA_UPDATED_START_DATE,
                         mCheckInDateWithYear);
 
                 //if check out date is not already selected
                 if (mCheckOutDateWithYear != null && mCheckOutDateWithYear.equalsIgnoreCase
-                        (getResources().getString(R.string.select_return_date))) {
+                        (getResources().getString(R.string.end_date))) {
                     mCheckOutDateWithYear = null;
                 }
-                mCheckOutIntent.putExtra(Constants.INTENT_EXTRA_UPDATED_RETURN_DATE,
+                mCheckOutIntent.putExtra(Constants.INTENT_EXTRA_UPDATED_END_DATE,
                         mCheckOutDateWithYear);
             }
-            mCheckOutIntent.putExtra(Constants.FLIGHT_DEPART_DATE, mSourceDate.getText()
+            mCheckOutIntent.putExtra(Constants.KEY_CALENDER_START_DATE, mSourceDate.getText()
                     .toString());
-            mCheckOutIntent.putExtra(Constants.HOTEL_BOOK_DATE_NEXT_TYPE,
+            mCheckOutIntent.putExtra(Constants.KEY_DATE,
                     mCheckInDateWithYear);
             startActivityForResult(mCheckOutIntent, Constants
                     .REQUEST_CODE_RETURN_DATE);
@@ -124,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     public void initializeViewForDomesticRoundTrip() {
         Resources res = getResources();
         if (mReturnDate.getText().toString().equalsIgnoreCase(res.getString(R.string
-                .select_return_date))) {
+                .end_date))) {
             if (mReturnOn != null)
                 mReturnOn.setVisibility(View.GONE);
         } else {
@@ -138,11 +133,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         mReturnDate.setTag(AppUtility.formatDate(this, checkOutDate, Constants
-                .ORDER_SUMMARY_BUS_TICKET_DATE_FORMAT, Constants
-                .TRAVEL_VERTICALS_HOMESCREEN_DATE_FORMAT));
+                .KEY_DISPLAY_DATE_FORMAT, Constants
+                .KEY_MONTH_DATE_FORMAT));
         mReturnDate.setText(AppUtility.formatDate(this, checkOutDate, Constants
-                .ORDER_SUMMARY_BUS_TICKET_DATE_FORMAT, Constants
-                .TRAVEL_FLIGHT_HOMESCREEN_DATE_FORMAT));
+                .KEY_DISPLAY_DATE_FORMAT, Constants
+                .KEY_CALENDER_DATE_FORMAT));
         mReturnDate.setTextColor(getResources().getColor(R.color.black));
         //mReturnDate.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
         //CJRAppUtility.setRobotoRegularFont(this.getActivity(), mReturnDate, Typeface.NORMAL);
@@ -163,54 +158,54 @@ public class MainActivity extends AppCompatActivity {
             //check-in date from Calender screen
             case Constants.REQUEST_CODE_DEPART_DATE: {
                 if (data != null && data.hasExtra(Constants
-                        .INTENT_EXTRA_SELECTED_DEPART_DATE) &&
-                        data.hasExtra(Constants.INTENT_EXTRA_SELECTED_RETURN_DATE)) {
+                        .INTENT_EXTRA_SELECTED_START_DATE) &&
+                        data.hasExtra(Constants.INTENT_EXTRA_SELECTED_END_DATE)) {
                     //set depart date
                     String checkInDate = data.getStringExtra(Constants
-                            .INTENT_EXTRA_SELECTED_DEPART_DATE);
+                            .INTENT_EXTRA_SELECTED_START_DATE);
                     setCheckInLyt(checkInDate, false);
                     //set return date
                     String checkOutDate = data.getStringExtra(Constants
-                            .INTENT_EXTRA_SELECTED_RETURN_DATE);
+                            .INTENT_EXTRA_SELECTED_END_DATE);
                     setCheckOutLyt(checkOutDate, false);
 
                 } else if (data != null && data.hasExtra(Constants
-                        .INTENT_EXTRA_SELECTED_DEPART_DATE)) {
+                        .INTENT_EXTRA_SELECTED_START_DATE)) {
                     String checkInDate = data.getStringExtra(Constants
-                            .INTENT_EXTRA_SELECTED_DEPART_DATE);
+                            .INTENT_EXTRA_SELECTED_START_DATE);
                     setCheckInLyt(checkInDate, false);
 
                 } else if (data != null && data.hasExtra(Constants
-                        .INTENT_EXTRA_SELECTED_RETURN_DATE)) {
+                        .INTENT_EXTRA_SELECTED_END_DATE)) {
                     //set return date
                     String checkOutDate = data.getStringExtra(Constants
-                            .INTENT_EXTRA_SELECTED_RETURN_DATE);
+                            .INTENT_EXTRA_SELECTED_END_DATE);
                     setCheckOutLyt(checkOutDate, false);
                 }
                 break;
             }
             case (Constants.REQUEST_CODE_RETURN_DATE): {
                 if (data != null && data.hasExtra(Constants
-                        .INTENT_EXTRA_SELECTED_DEPART_DATE) &&
-                        data.hasExtra(Constants.INTENT_EXTRA_SELECTED_RETURN_DATE)) {
+                        .INTENT_EXTRA_SELECTED_START_DATE) &&
+                        data.hasExtra(Constants.INTENT_EXTRA_SELECTED_END_DATE)) {
                     //set depart date
                     String checkInDate = data.getStringExtra(Constants
-                            .INTENT_EXTRA_SELECTED_DEPART_DATE);
+                            .INTENT_EXTRA_SELECTED_START_DATE);
                     setCheckInLyt(checkInDate, false);
                     //set return date
                     String checkOutDate = data.getStringExtra(Constants
-                            .INTENT_EXTRA_SELECTED_RETURN_DATE);
+                            .INTENT_EXTRA_SELECTED_END_DATE);
                     setCheckOutLyt(checkOutDate, false);
                 } else if (data != null && data.hasExtra(Constants
-                        .INTENT_EXTRA_SELECTED_RETURN_DATE)) {
+                        .INTENT_EXTRA_SELECTED_END_DATE)) {
                     //set return date
                     String checkOutDate = data.getStringExtra(Constants
-                            .INTENT_EXTRA_SELECTED_RETURN_DATE);
+                            .INTENT_EXTRA_SELECTED_END_DATE);
                     setCheckOutLyt(checkOutDate, false);
                 } else if (data != null && data.hasExtra(Constants
-                        .INTENT_EXTRA_SELECTED_DEPART_DATE)) {
+                        .INTENT_EXTRA_SELECTED_START_DATE)) {
                     String checkInDate = data.getStringExtra(Constants
-                            .INTENT_EXTRA_SELECTED_DEPART_DATE);
+                            .INTENT_EXTRA_SELECTED_START_DATE);
                     setCheckInLyt(checkInDate, false);
 
                 }
@@ -221,10 +216,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void resetCheckOutDate() {
         if (!mReturnDate.getText().toString().equalsIgnoreCase(getResources().getString(R.string
-                .select_return_date))) {
-            mReturnDate.setText(getResources().getString(R.string.select_return_date));
+                .end_date))) {
+            mReturnDate.setText(getResources().getString(R.string.end_date));
             mReturnDate.setTextColor(getResources().getColor(R.color.gray));
-            mCheckOutDateWithYear = getResources().getString(R.string.select_return_date);
+            mCheckOutDateWithYear = getResources().getString(R.string.end_date);
         }
     }
 
@@ -233,11 +228,11 @@ public class MainActivity extends AppCompatActivity {
         resetCheckOutDate();
 
         mSourceDate.setTag(AppUtility.formatDate(this, checkInDate, Constants
-                .ORDER_SUMMARY_BUS_TICKET_DATE_FORMAT, Constants
-                .TRAVEL_VERTICALS_HOMESCREEN_DATE_FORMAT));
+                .KEY_DISPLAY_DATE_FORMAT, Constants
+                .KEY_MONTH_DATE_FORMAT));
         mSourceDate.setText(AppUtility.formatDate(this, checkInDate, Constants
-                .ORDER_SUMMARY_BUS_TICKET_DATE_FORMAT, Constants
-                .TRAVEL_FLIGHT_HOMESCREEN_DATE_FORMAT));
+                .KEY_DISPLAY_DATE_FORMAT, Constants
+                .KEY_CALENDER_DATE_FORMAT));
 
         mSourceDate.setTextColor(getResources().getColor(R.color.black));
         //mSourceDate.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
@@ -258,60 +253,58 @@ public class MainActivity extends AppCompatActivity {
 //                .isChecked()) {
 //            mCheckInIntent = new Intent(this, AJRFlightOneWayCalender.class);
 //        } else {
-        mCheckInIntent = new Intent(this, AJRFlightTwoWayCalendar.class);
+        mCheckInIntent = new Intent(this, TwoWayCalendarActivity.class);
 //        }
 
         if (mSourceDate.getText().toString().equalsIgnoreCase(getResources().getString(R.string
-                .flight_depart))) {
+                .start_date))) {
             mCheckInDateWithYear = getTodaysDate();
         } else {
             mCheckInDateWithYear = mSourceDate.getText().toString();
             mCheckInDateWithYear = AppUtility.formatDate(this, mCheckInDateWithYear,
-                    Constants.TRAVEL_FLIGHT_HOMESCREEN_DATE_FORMAT, Constants
-                            .TRAVEL_VERTICALS_HOMESCREEN_DATE_FORMAT);
+                    Constants.KEY_CALENDER_DATE_FORMAT, Constants
+                            .KEY_MONTH_DATE_FORMAT);
         }
 
-        mCheckInIntent.putExtra(Constants.FLIGHT_BOOK_DATE, mCheckInDateWithYear);
+        mCheckInIntent.putExtra(Constants.KEY_DATE, mCheckInDateWithYear);
         mCheckInIntent.putExtra(Constants.INTENT_EXTRA_SELECTED_INTENT_TYPE,
-                Constants.INTENT_EXTRA_SELECTED_DEPART_DATE);
-        mCheckInIntent.putExtra(Constants.INTENT_EXTRA_IS_ONE_WAY, false);
-
+                Constants.INTENT_EXTRA_SELECTED_START_DATE);
 
 //        if (!mDomesticRoundTrip.isChecked()) {
-//            if (!mCheckInDateWithYear.equalsIgnoreCase(Constants.FLIGHT_DEPART)) {
-//                mCheckInIntent.putExtra(Constants.INTENT_EXTRA_UPDATED_DEPART_DATE,
+//            if (!mCheckInDateWithYear.equalsIgnoreCase(Constants.KEY_START_DATE)) {
+//                mCheckInIntent.putExtra(Constants.INTENT_EXTRA_UPDATED_START_DATE,
 //                        mCheckInDateWithYear);
 //            }
 //        } else {
-        mCheckInIntent.putExtra(Constants.FLIGHT_TICKET_DATE_NEXT_TYPE,
+        mCheckInIntent.putExtra(Constants.KEY_DATE_NEXT_TYPE,
                 mCheckOutDateWithYear);
 
         if (mCheckInDateWithYear != null && !mCheckInDateWithYear.equalsIgnoreCase
-                (Constants.FLIGHT_DEPART) &&
+                (Constants.KEY_START_DATE) &&
                 mCheckOutDateWithYear != null && !mCheckOutDateWithYear.equalsIgnoreCase
                 (getResources().getString(R.string
-                        .select_return_date))) {
-            mCheckInIntent.putExtra(Constants.INTENT_EXTRA_UPDATED_DEPART_DATE,
+                        .end_date))) {
+            mCheckInIntent.putExtra(Constants.INTENT_EXTRA_UPDATED_START_DATE,
                     mCheckInDateWithYear);
-            mCheckInIntent.putExtra(Constants.INTENT_EXTRA_UPDATED_RETURN_DATE,
+            mCheckInIntent.putExtra(Constants.INTENT_EXTRA_UPDATED_END_DATE,
                     mCheckOutDateWithYear);
         }
         if (mCheckInDateWithYear != null && !mCheckInDateWithYear.equalsIgnoreCase
-                (Constants.FLIGHT_DEPART) &&
+                (Constants.KEY_START_DATE) &&
                 mCheckOutDateWithYear != null && mCheckOutDateWithYear.equalsIgnoreCase
                 (getResources().getString(R.string
-                        .select_return_date))) {
+                        .end_date))) {
             if (mCheckInDateWithYear != null) {
-                mCheckInIntent.putExtra(Constants.INTENT_EXTRA_RESETED_DEPART_DATE,
+                mCheckInIntent.putExtra(Constants.INTENT_EXTRA_RESETED_START_DATE,
                         mCheckInDateWithYear);
             }
         }
 //        }
 
-        mCheckInIntent.putExtra(Constants.HOTEL_BOOK_DATE_NEXT_TYPE,
+        mCheckInIntent.putExtra(Constants.KEY_DATE,
                 mCheckOutDateWithYear);
 
-        mCheckInIntent.putExtra(Constants.FLIGHT_RETURN_DATE, mReturnDate.getText()
+        mCheckInIntent.putExtra(Constants.KEY_CALENDER_END_DATE, mReturnDate.getText()
                 .toString());
 
 //        mCheckInIntent.putExtra(Constants.INTENT_EXTRA_FLIGHT_SEARCH_NO_OF_ADULT_PASSENGERS,
