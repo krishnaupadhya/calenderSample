@@ -31,7 +31,7 @@
         android:layout_below="@id/flight_calendar_custom_date_cell"
         android:layout_centerHorizontal="true"/>
 
-    <net.one97.paytm.movies.utils.CJRDottedProgressBar
+    <com.android.calender.CJRDottedProgressBar
         android:id="@+id/progressBar"
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
@@ -40,6 +40,6 @@
         calen:dot_margin="2"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/flight_calendar_custom_date_cell">
-    </net.one97.paytm.movies.utils.CJRDottedProgressBar>
+    </com.android.calender.CJRDottedProgressBar>
 
 </RelativeLayout>

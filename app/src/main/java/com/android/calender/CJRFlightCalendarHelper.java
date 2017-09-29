@@ -195,65 +195,63 @@ public class CJRFlightCalendarHelper implements CalendarPickerView.OnDateSelecte
 
     private void getDataFromIntent() {
        appLocale = new Locale(LocaleHelper.getDefaultLanguage());
-//
-//        Intent i = mActivity.getIntent();
-//        mIntentType = i.getStringExtra(CJRHotelsConstants.INTENT_EXTRA_SELECTED_INTENT_TYPE);
-//
-//        if(i.hasExtra(CJRConstants.INTENT_EXTRA_SELECTED_DATE_TIME)) {
-//            mPreviouslySelectedDate = i.getLongExtra(CJRConstants.INTENT_EXTRA_SELECTED_DATE_TIME, 0);
-//        }
-//        if(i.hasExtra(CJRConstants.EXTRA_INTENT_BUS_JOURNEY_SELECTED_DATE)) {
-//            selectedDateWithYear = i.getStringExtra(CJRConstants.EXTRA_INTENT_BUS_JOURNEY_SELECTED_DATE);
-//        }
-//        if(mPreviouslySelectedDate == 0 && selectedDateWithYear != null && !TextUtils.isEmpty(selectedDateWithYear)) {
-//            Date date = null;
-//            try {
-//                date = new SimpleDateFormat(CJRConstants.TRAVEL_VERTICALS_HOMESCREEN_DATE_FORMAT, appLocale ).parse(selectedDateWithYear);
-//                mPreviouslySelectedDate = date.getTime();
-//            } catch (ParseException e) {
-//                if(CJRAppCommonUtility.isDebug) {
-//                    e.printStackTrace();
-//                }
-//                CJRAppUtility.refreshAppToUpdateLocale(mActivity);
-//            }
-//        }
-//
-//        //checkin date selected previously
-//        if(i.hasExtra(CJRFlightConstants.INTENT_EXTRA_UPDATED_DEPART_DATE) ) {
-//            mSelectedCheckInDate = i.getStringExtra(CJRFlightConstants.INTENT_EXTRA_UPDATED_DEPART_DATE);
-//        } else if(i.hasExtra(CJRFlightConstants.INTENT_EXTRA_RESETED_DEPART_DATE)) {
-//            mSelectedCheckInDate = i.getStringExtra(CJRFlightConstants.INTENT_EXTRA_RESETED_DEPART_DATE);
-//        } else if(i.hasExtra(CJRFlightConstants.FLIGHT_BOOK_DATE)) {
-//            mSelectedCheckInDate = i.getStringExtra(CJRFlightConstants.FLIGHT_BOOK_DATE);
-//        }
-//
-//        if(mPreviouslySelectedDate == 0 && mSelectedCheckInDate != null && !TextUtils.isEmpty(mSelectedCheckInDate)) {
-//            Date date = null;
-//            try {
-//                date = new SimpleDateFormat(CJRConstants.TRAVEL_VERTICALS_HOMESCREEN_DATE_FORMAT, appLocale ).parse(mSelectedCheckInDate);
-//                mPreviouslySelectedDate = date.getTime();
-//            } catch (ParseException e) {
-//                if(CJRAppCommonUtility.isDebug) {
-//                    e.printStackTrace();
-//                }
-//                CJRAppUtility.refreshAppToUpdateLocale(mActivity);
-//            }
-//        }
-//
-//        //checkout date selected previously
-//        if(i.hasExtra(CJRFlightConstants.INTENT_EXTRA_UPDATED_RETURN_DATE)) {
-//            mSelectedCheckOutDate = i.getStringExtra(CJRFlightConstants.INTENT_EXTRA_UPDATED_RETURN_DATE);
-//        }
-//
-//        if(i.hasExtra(CJRHotelsConstants.HOTEL_BOOK_DATE_NEXT_TYPE)) {
-//            mOtherDate = i.getStringExtra(CJRHotelsConstants.HOTEL_BOOK_DATE_NEXT_TYPE);
-//            if(mIntentType != null && mIntentType.equalsIgnoreCase(CJRFlightConstants.INTENT_EXTRA_SELECTED_RETURN_DATE)
-//                    && mOtherDate != null && !mOtherDate.equalsIgnoreCase(mActivity.getResources().getString(R.string.flight_return))) {
-//                if(TextUtils.isEmpty(mOtherDate)) {
-//                    mOtherDate = i.getStringExtra(CJRHotelsConstants.HOTEL_BOOK_DATE_NEXT_TYPE);
-//                }
-//            }
-//        }
+
+        Intent i = mActivity.getIntent();
+        mIntentType = i.getStringExtra(Constants.INTENT_EXTRA_SELECTED_INTENT_TYPE);
+
+        if(i.hasExtra(Constants.INTENT_EXTRA_SELECTED_DATE_TIME)) {
+            mPreviouslySelectedDate = i.getLongExtra(Constants.INTENT_EXTRA_SELECTED_DATE_TIME, 0);
+        }
+        if(i.hasExtra(Constants.EXTRA_INTENT_BUS_JOURNEY_SELECTED_DATE)) {
+            selectedDateWithYear = i.getStringExtra(Constants.EXTRA_INTENT_BUS_JOURNEY_SELECTED_DATE);
+        }
+        if(mPreviouslySelectedDate == 0 && selectedDateWithYear != null && !TextUtils.isEmpty(selectedDateWithYear)) {
+            Date date = null;
+            try {
+                date = new SimpleDateFormat(Constants.TRAVEL_VERTICALS_HOMESCREEN_DATE_FORMAT, appLocale ).parse(selectedDateWithYear);
+                mPreviouslySelectedDate = date.getTime();
+            } catch (ParseException e) {
+               
+                    e.printStackTrace();
+            
+                AppUtility.refreshAppToUpdateLocale(mActivity);
+            }
+        }
+
+        //checkin date selected previously
+        if(i.hasExtra(Constants.INTENT_EXTRA_UPDATED_DEPART_DATE) ) {
+            mSelectedCheckInDate = i.getStringExtra(Constants.INTENT_EXTRA_UPDATED_DEPART_DATE);
+        } else if(i.hasExtra(Constants.INTENT_EXTRA_RESETED_DEPART_DATE)) {
+            mSelectedCheckInDate = i.getStringExtra(Constants.INTENT_EXTRA_RESETED_DEPART_DATE);
+        } else if(i.hasExtra(Constants.FLIGHT_BOOK_DATE)) {
+            mSelectedCheckInDate = i.getStringExtra(Constants.FLIGHT_BOOK_DATE);
+        }
+
+        if(mPreviouslySelectedDate == 0 && mSelectedCheckInDate != null && !TextUtils.isEmpty(mSelectedCheckInDate)) {
+            Date date = null;
+            try {
+                date = new SimpleDateFormat(Constants.TRAVEL_VERTICALS_HOMESCREEN_DATE_FORMAT, appLocale ).parse(mSelectedCheckInDate);
+                mPreviouslySelectedDate = date.getTime();
+            } catch (ParseException e) {
+                    e.printStackTrace();
+                AppUtility.refreshAppToUpdateLocale(mActivity);
+            }
+        }
+
+        //checkout date selected previously
+        if(i.hasExtra(Constants.INTENT_EXTRA_UPDATED_RETURN_DATE)) {
+            mSelectedCheckOutDate = i.getStringExtra(Constants.INTENT_EXTRA_UPDATED_RETURN_DATE);
+        }
+
+        if(i.hasExtra(Constants.HOTEL_BOOK_DATE_NEXT_TYPE)) {
+            mOtherDate = i.getStringExtra(Constants.HOTEL_BOOK_DATE_NEXT_TYPE);
+            if(mIntentType != null && mIntentType.equalsIgnoreCase(Constants.INTENT_EXTRA_SELECTED_RETURN_DATE)
+                    && mOtherDate != null && !mOtherDate.equalsIgnoreCase(mActivity.getResources().getString(R.string.flight_return))) {
+                if(TextUtils.isEmpty(mOtherDate)) {
+                    mOtherDate = i.getStringExtra(Constants.HOTEL_BOOK_DATE_NEXT_TYPE);
+                }
+            }
+        }
 
     }
 
@@ -403,7 +401,7 @@ public class CJRFlightCalendarHelper implements CalendarPickerView.OnDateSelecte
      */
     private boolean compareTwoDates(String inFormattedDate, String inOtherDate, String inDateType) {
         try {
-            SimpleDateFormat formatter = new SimpleDateFormat(Constants.HOTELS_DISPLAY_DATE_FORMAT, appLocale);
+            SimpleDateFormat formatter = new SimpleDateFormat(Constants.ORDER_SUMMARY_BUS_TICKET_DATE_FORMAT, appLocale);
             Date date1 = formatter.parse(inFormattedDate);
             Date date2 = null;
 

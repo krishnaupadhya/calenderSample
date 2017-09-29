@@ -47,31 +47,31 @@ public class AJRFlightTwoWayCalendar extends AppCompatActivity implements CJRFli
     private void getIntentData() {
         //checkin date selected previously
         Intent i = getIntent();
-        /*if(i.hasExtra(CJRHotelsConstants.INTENT_EXTRA_UPDATED_CHECK_IN_DATE) ) {
-            mCheckInDateWithYear = i.getStringExtra(CJRHotelsConstants.INTENT_EXTRA_UPDATED_CHECK_IN_DATE);
+       /* if(i.hasExtra(Constants.INTENT_EXTRA_UPDATED_CHECK_IN_DATE) ) {
+            mCheckInDateWithYear = i.getStringExtra(Constants.INTENT_EXTRA_UPDATED_CHECK_IN_DATE);
         }
 
         //checkout date selected previously
-        if(i.hasExtra(CJRHotelsConstants.INTENT_EXTRA_UPDATED_CHECK_OUT_DATE)) {
-            mCheckOutDateWithYear = i.getStringExtra(CJRHotelsConstants.INTENT_EXTRA_UPDATED_CHECK_OUT_DATE);
+        if(i.hasExtra(Constants.INTENT_EXTRA_UPDATED_CHECK_OUT_DATE)) {
+            mCheckOutDateWithYear = i.getStringExtra(Constants.INTENT_EXTRA_UPDATED_CHECK_OUT_DATE);
         }*/
-        //checkin date selected previously
-//        if(i.hasExtra(CJRFlightConstants.INTENT_EXTRA_UPDATED_DEPART_DATE) ) {
-//            mCheckInDateWithYear = i.getStringExtra(CJRFlightConstants.INTENT_EXTRA_UPDATED_DEPART_DATE);
-//        } else if(i.hasExtra(CJRFlightConstants.INTENT_EXTRA_RESETED_DEPART_DATE)) {
-//            mCheckInDateWithYear = i.getStringExtra(CJRFlightConstants.INTENT_EXTRA_RESETED_DEPART_DATE);
-//        } else if(i.hasExtra(CJRFlightConstants.FLIGHT_BOOK_DATE)) {
-//            mCheckInDateWithYear = i.getStringExtra(CJRFlightConstants.FLIGHT_BOOK_DATE);
-//        }
-//
-//        //checkout date selected previously
-//        if(i.hasExtra(CJRFlightConstants.INTENT_EXTRA_UPDATED_RETURN_DATE)) {
-//            mCheckOutDateWithYear = i.getStringExtra(CJRFlightConstants.INTENT_EXTRA_UPDATED_RETURN_DATE);
-//        }
-//
-//        if(getIntent().hasExtra(CJRHotelsConstants.INTENT_EXTRA_SELECTED_INTENT_TYPE)) {
-//            mFrom = getIntent().getStringExtra(CJRHotelsConstants.INTENT_EXTRA_SELECTED_INTENT_TYPE);
-//        }
+ //       checkin date selected previously
+        if(i.hasExtra(Constants.INTENT_EXTRA_UPDATED_DEPART_DATE) ) {
+            mCheckInDateWithYear = i.getStringExtra(Constants.INTENT_EXTRA_UPDATED_DEPART_DATE);
+        } else if(i.hasExtra(Constants.INTENT_EXTRA_RESETED_DEPART_DATE)) {
+            mCheckInDateWithYear = i.getStringExtra(Constants.INTENT_EXTRA_RESETED_DEPART_DATE);
+        } else if(i.hasExtra(Constants.FLIGHT_BOOK_DATE)) {
+            mCheckInDateWithYear = i.getStringExtra(Constants.FLIGHT_BOOK_DATE);
+        }
+
+        //checkout date selected previously
+        if(i.hasExtra(Constants.INTENT_EXTRA_UPDATED_RETURN_DATE)) {
+            mCheckOutDateWithYear = i.getStringExtra(Constants.INTENT_EXTRA_UPDATED_RETURN_DATE);
+        }
+
+        if(getIntent().hasExtra(Constants.INTENT_EXTRA_SELECTED_INTENT_TYPE)) {
+            mFrom = getIntent().getStringExtra(Constants.INTENT_EXTRA_SELECTED_INTENT_TYPE);
+        }
     }
 
     private void initializeViews() {
@@ -288,8 +288,6 @@ public class AJRFlightTwoWayCalendar extends AppCompatActivity implements CJRFli
         mCheckInDateWithYear = inCheckInDate;
         mCheckOutDateWithYear= inCheckOutDate;
         mIntentType = inIntentType;
-
-
         viewPager.setCurrentItem(1);
     }
 
