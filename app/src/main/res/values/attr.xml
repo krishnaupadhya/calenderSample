@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="CJRDottedProgressBar">
+        <attr name="dot_size" format="integer" />
+        <attr name="dot_margin" format="integer" />
+    </declare-styleable>
+
+</resources>

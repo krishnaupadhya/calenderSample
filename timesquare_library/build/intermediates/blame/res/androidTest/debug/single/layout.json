@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "E:\\Android\\Calender\\timesquare_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\week.xml",
+        "source": "E:\\Android\\Calender\\timesquare_library\\build\\intermediates\\bundles\\debug\\res\\layout\\week.xml"
+    },
+    {
+        "merged": "E:\\Android\\CustomCalender\\timesquare_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\week.xml",
+        "source": "E:\\Android\\CustomCalender\\timesquare_library\\build\\intermediates\\bundles\\debug\\res\\layout\\week.xml"
+    },
+    {
+        "merged": "E:\\Android\\CustomCalender\\timesquare_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\month.xml",
+        "source": "E:\\Android\\CustomCalender\\timesquare_library\\build\\intermediates\\bundles\\debug\\res\\layout\\month.xml"
+    },
+    {
+        "merged": "E:\\Android\\Calender\\timesquare_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\month.xml",
+        "source": "E:\\Android\\Calender\\timesquare_library\\build\\intermediates\\bundles\\debug\\res\\layout\\month.xml"
+    },
+    {
+        "merged": "E:\\Android\\CalenderSample\\timesquare_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\month.xml",
+        "source": "E:\\Android\\CalenderSample\\timesquare_library\\build\\intermediates\\bundles\\debug\\res\\layout\\month.xml"
+    },
+    {
+        "merged": "E:\\Android\\CalenderSample\\timesquare_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\week.xml",
+        "source": "E:\\Android\\CalenderSample\\timesquare_library\\build\\intermediates\\bundles\\debug\\res\\layout\\week.xml"
+    }
+]

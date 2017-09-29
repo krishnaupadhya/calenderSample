@@ -1,0 +1,11 @@
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_pressed="true"
+        android:drawable="@drawable/circle" /> <!-- pressed -->
+    <item
+        android:state_focused="true"
+        android:drawable="@drawable/circle" /> <!-- focused -->
+    <item
+        android:drawable="@color/white" /> <!-- default -->
+</selector>

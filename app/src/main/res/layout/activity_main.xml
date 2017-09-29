@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customNS="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.calender.MainActivity">
+
+
+    <LinearLayout
+        android:id="@+id/journey_date"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:minHeight="58dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <RelativeLayout
+            android:onClick="launchDepartCalender"
+            android:id="@+id/departure_date_lyt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/label_depart_on"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:tag="@string/flight_depart"
+                    android:text="@string/flight_depart"
+                    android:textColor="@color/flight_text_color"
+                    android:textSize="@dimen/cart_14sp"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/departure_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_depart_on"
+                    android:layout_marginTop="6dp"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/source_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:tag="@string/flight_depart"
+                        android:text="@string/flight_depart"
+                        android:textColor="@color/flight_from_to_color"
+                        android:textSize="@dimen/cart_16sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/return_date_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="4dp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/label_return_on"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:tag="@string/select_return_date"
+                    android:text="@string/select_return_date"
+                    android:textColor="@color/flight_text_color"
+                    android:textSize="@dimen/cart_14sp"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/return_date_Rel_lyt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_return_on"
+                    android:layout_marginTop="6dp"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/return_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:tag="@string/select_return_date"
+                        android:text="@string/select_return_date"
+                        android:textColor="@color/flight_from_to_color"
+                        android:textSize="@dimen/cart_16sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

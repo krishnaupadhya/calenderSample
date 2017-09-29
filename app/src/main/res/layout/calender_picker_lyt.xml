@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/selected_date_lyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/train_departure_tab"
+                android:textColor="@color/departure_txt"
+                android:textSize="13sp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/selected_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/train_departure_tab"
+                android:textColor="@color/today_date_color"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/sep_view"
+            android:layout_width="78dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@color/train_view_sep" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/calendarLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.squareup.timessquare.CalendarPickerView
+            android:id="@+id/calendar_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/background_color"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp"
+            android:scrollbarStyle="outsideOverlay" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/adjacent_btn_lyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:visibility="gone"
+        android:weightSum="2">
+
+        <RelativeLayout
+            android:id="@+id/lyt_today"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="8dp"
+            android:layout_toLeftOf="@+id/lyt_tomorrow_date"
+            android:layout_weight="1"
+            android:background="@drawable/adjacent_date_selector"
+            android:clickable="true"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/txt_today_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/today_btn"
+                android:textColor="@drawable/adjacent_btn_txt_selector"
+                android:textSize="@dimen/text_size_slider_heading" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lyt_tomorrow"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/adjacent_date_selector"
+            android:clickable="true"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/txt_tomorrow_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/tomorrow_btn"
+                android:textColor="@drawable/adjacent_btn_txt_selector"
+                android:textSize="@dimen/text_size_slider_heading" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/footer_lyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:paddingBottom="5dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/sep_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:src="@color/separators" />
+
+        <RelativeLayout
+            android:id="@+id/adjacent_dates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sep_1">
+
+            <LinearLayout
+                android:id="@+id/todays_date_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/sep_vertical"
+                android:background="@drawable/calendar_adjacent_button_selector"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/label_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center"
+                    android:text="@string/bus_today_btn"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/todays_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/label_today"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@id/sep_vertical"
+                android:layout_width="1dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:src="@color/separators" />
+
+            <LinearLayout
+                android:id="@+id/tomorrows_date_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/sep_vertical"
+                android:background="@drawable/calendar_adjacent_button_selector"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/label_tommorrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:text="@string/bus_tomorrow_btn"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tomorrows_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/label_tommorrow"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

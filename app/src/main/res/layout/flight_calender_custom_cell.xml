@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:calen="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:textSize="14sp"
+        android:textColor="@color/hotel_grey"
+        android:gravity="center"
+        android:id="@+id/flight_calendar_custom_date_cell"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textSize="9sp"
+        android:textColor="@color/hotel_grey"
+        android:gravity="center"
+        android:id="@+id/flight_calendar_custom_price_cell"
+        android:layout_below="@id/flight_calendar_custom_date_cell"
+        android:layout_centerHorizontal="true"/>
+
+    <net.one97.paytm.movies.utils.CJRDottedProgressBar
+        android:id="@+id/progressBar"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        calen:dot_size="3"
+        calen:dot_margin="2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/flight_calendar_custom_date_cell">
+    </net.one97.paytm.movies.utils.CJRDottedProgressBar>
+
+</RelativeLayout>
